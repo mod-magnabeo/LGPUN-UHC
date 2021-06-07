@@ -1,0 +1,8 @@
+name: LGPUNUHC
+version: 1.0
+author: Wolf_IV
+main: com.Wolf_IV.LGPUNUHC.MainL
+commands: 
+  startlg:
+    description: Starts Uhc
+    permission: startlg.use
