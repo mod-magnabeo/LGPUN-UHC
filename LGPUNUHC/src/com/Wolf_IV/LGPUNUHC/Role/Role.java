@@ -9,6 +9,7 @@ public class Role {
 	boolean rMiddle = false;
 	Role rolePlayed;
 	String sRolePlayed;
+	Role nvRole;
 	public boolean active = true;
 	static int numOrdre;
 	int ordre;
@@ -31,6 +32,7 @@ public class Role {
 				ordre = numOrdre;
 				role[ordre] = this;
 				numOrdre++;
+				nvRole = this;
 				System.out.println(ordre);
 		
 		
@@ -53,7 +55,8 @@ public class Role {
 	}
 	
 	public void change(Role r, int o, Role rA) {
-		role[o].active = false;
+		//role[o].active = false;
+		role[o]=null;
 		 r.create(rA.player, rA.getTeam());
 	}
 	/**
