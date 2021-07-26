@@ -2,18 +2,19 @@ package com.Wolf_IV.LGPUNUHC.Role;
 
 import org.bukkit.entity.Player;
 
+import com.Wolf_IV.LGPUNUHC.Team.Joueur;
 import com.Wolf_IV.LGPUNUHC.Team.Team;
 
 public class Seer extends Role{
 	int rm = 0;
 	@Override
-	public void create(String player, Team team) {
-		new Seer(player, team);
+	public Role create(Joueur player) {
+		return new Seer(player);
 	}
 	
-	public Seer(String player, Team team) {
+	public Seer(Joueur player) {
 		this.setRolePlayed(this, "Seer");
-		this.init(player, team);
+		this.init(player);
 	}
 	@Override
 	public void clickPlayer(Role p, Player player) {

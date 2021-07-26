@@ -2,19 +2,20 @@ package com.Wolf_IV.LGPUNUHC.Role;
 
 import org.bukkit.entity.Player;
 
+import com.Wolf_IV.LGPUNUHC.Team.Joueur;
 import com.Wolf_IV.LGPUNUHC.Team.Team;
 
 public class TroubleMaker extends Role{
 	boolean aP = false;
 	Role aR;
 	@Override
-	public void create(String player, Team team) {
-		new Seer(player, team);
+	public Role create(Joueur player) {
+		return new TroubleMaker(player);
 	}
 	
-	public TroubleMaker(String player, Team team) {
+	public TroubleMaker(Joueur player) {
 		this.setRolePlayed(this, "Robber");
-		this.init(player, team);
+		this.init(player);
 	}
 	
 	@Override

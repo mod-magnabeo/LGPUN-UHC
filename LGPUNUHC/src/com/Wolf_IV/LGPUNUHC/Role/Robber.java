@@ -2,17 +2,18 @@ package com.Wolf_IV.LGPUNUHC.Role;
 
 import org.bukkit.entity.Player;
 
+import com.Wolf_IV.LGPUNUHC.Team.Joueur;
 import com.Wolf_IV.LGPUNUHC.Team.Team;
 
 public class Robber extends Role{
 	@Override
-	public void create(String player, Team team) {
-		new Seer(player, team);
+	public Role create(Joueur player) {
+		return new Robber(player);
 	}
 	
-	public Robber(String player, Team team) {
+	public Robber(Joueur player) {
 		this.setRolePlayed(this, "Robber");
-		this.init(player, team);
+		this.init(player);
 	}
 	
 	@Override
@@ -25,6 +26,7 @@ public class Robber extends Role{
 			p.nvRole = this.nvRole;
 			this.nvRole = container;
 			player.sendMessage("Votre role et celui de "+p.player+" on été invertis vous devenez donc "+this.nvRole);
+			end();
 		}
 	}
 }

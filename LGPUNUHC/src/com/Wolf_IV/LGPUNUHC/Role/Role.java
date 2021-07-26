@@ -3,6 +3,7 @@ package com.Wolf_IV.LGPUNUHC.Role;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import com.Wolf_IV.LGPUNUHC.Team.Joueur;
 import com.Wolf_IV.LGPUNUHC.Team.Team;
 
 public class Role {
@@ -10,59 +11,79 @@ public class Role {
 	Role rolePlayed;
 	String sRolePlayed;
 	Role nvRole;
+	
+	Role pre;
+	Role next;
+	
 	public boolean active = true;
+	public boolean isTurn = false;
 	static int numOrdre;
 	int ordre;
-	public static Role[] role = new Role[25];
-	public String player;
-	Team team;
+	//public static Role[] role = new Role[25];
+	public Joueur player;
+
 	static Role rNow;
-	public void init(String p, Team t) {
+	public boolean wPlay = true;
+	public void init(Joueur p) {
+		p.role = this;
 		System.out.println("hello");
 		if(p == null) {
 			rMiddle = true;
 		}else {
 		this.player = p;
-		this.team = t;
 		}
 		/*if(Bukkit.getPlayer(this.player) != null) {
 			Bukkit.getPlayer(this.player).sendMessage("Vous Etes "+this.sRolePlayed);
 		}*/
 		
 				ordre = numOrdre;
-				role[ordre] = this;
+				if(player.team.roleNow != null) {
+					player.team.roleNow.pre = this;
+					this.next = player.team.roleNow;
+					player.team.roleNow = this;
+				}else {
+					player.team.roleNow = this;
+				}
+				player.team.role[ordre] = this;
 				numOrdre++;
 				nvRole = this;
 				System.out.println(ordre);
+				
 		
 		
 	}
 	
 	public boolean play() {
-		//System.out.println("A votre tour de jouer");
 		if(this.player == null) {
 			return false;
 		}
-		Player player = Bukkit.getPlayer(this.player);
+		Player player = Bukkit.getPlayer(this.player.player);
 		if(player != null) {
-			player.sendMessage("A votre tour de jouer");
+			player.sendMessage("A votre tour de jouer faire /play");
 		}
-		
-		rNow = this;
+		isTurn = true;
+		this.player.team.roleNow = this;
+		if(wPlay) {
 		this.onPlay();
+		}else {
+			end();
+		}
 		return true;
 		
 	}
 	
 	public void change(Role r, int o, Role rA) {
 		//role[o].active = false;
-		role[o]=null;
-		 r.create(rA.player, rA.getTeam());
-	}
+		Joueur joueur = player.team.role[o].player;
+		player.team.role[o]=null;
+		 joueur.role = r.create(rA.player);
+	} 
 	/**
 	 * A override créer un nouveau role du meme type
+	 * @return 
 	 */
-	public void create(String player, Team team) {
+	public Role create(Joueur player) {
+		return null;
 		
 	}
 	/**
@@ -86,23 +107,28 @@ public class Role {
 		if(this.getPlayer() != null) {
 			this.getPlayer().sendMessage("§aC'est la fin de votre tour");
 		}
+		isTurn = false;
+		if(player.team.roleNow.next != null) {
+			player.team.roleNow.next.play();
+		}else {
+			Bukkit.broadcastMessage("Role Terminé");
+		}
+		
 	}
 	
 	
 	public Player getPlayer() {
-		return Bukkit.getPlayer(player);
+		return Bukkit.getPlayer(player.player);
 		
 	}
 	
-	public Team getTeam() {
-		return team;
-		
-	}
+	
 	
 	public void setRolePlayed(Role r, String s) {
 		this.rolePlayed = r;
 		this.sRolePlayed = s;
 	}
+	
 	
 	
 

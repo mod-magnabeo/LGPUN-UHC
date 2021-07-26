@@ -2,27 +2,32 @@ package com.Wolf_IV.LGPUNUHC.Role;
 
 import org.bukkit.entity.Player;
 
+import com.Wolf_IV.LGPUNUHC.Team.Joueur;
 import com.Wolf_IV.LGPUNUHC.Team.Team;
 
 public class Wolf extends Role{
 	@Override
-	public void create(String player, Team team) {
-		new Wolf(player, team);
+	public Role create(Joueur player) {
+		return new Wolf(player);
 	}
 	
-	public Wolf(String player, Team team) {
+	public Wolf(Joueur player) {
 		this.setRolePlayed(this, "WereWolf");
-		this.init(player, team);
+		this.init(player);
 	}
 	@Override
 	public void onPlay() {
 		int wCount = 0;
-		String player = "";
-		for(Role r : this.role) {
+		String player = "null";
+		for(Role r : this.player.team.role) {
 			if(r != null && r instanceof Wolf) {
 				wCount++;
-				if(!r.player.equalsIgnoreCase(this.player)) {
-					player = r.player;
+				if(!r.player.player.equalsIgnoreCase(this.player.player)) {
+					if(player.equalsIgnoreCase("null")) {
+					player = r.player.player;
+					}else {
+						player = player+" et "+r.player.player;
+					}
 				}
 			}
 		}

@@ -6,3 +6,5 @@ commands:
   startlg:
     description: Starts Uhc
     permission: startlg.use
+  play:
+    description: Affiche l'inventaire pour joué
