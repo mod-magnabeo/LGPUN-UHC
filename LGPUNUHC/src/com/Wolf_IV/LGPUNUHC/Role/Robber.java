@@ -25,7 +25,7 @@ public class Robber extends Role{
 			Role container = p.nvRole;
 			p.nvRole = this.nvRole;
 			this.nvRole = container;
-			player.sendMessage("Votre role et celui de "+p.player+" on été invertis vous devenez donc "+this.nvRole);
+			player.sendMessage("Votre role et celui de "+p.player.player+" on été invertis vous devenez donc "+this.nvRole.sRolePlayed);
 			end();
 		}
 	}

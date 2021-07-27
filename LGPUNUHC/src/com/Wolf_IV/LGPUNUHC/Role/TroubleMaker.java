@@ -30,7 +30,7 @@ public class TroubleMaker extends Role{
 			Role container = p.nvRole;
 			p.nvRole = aR.nvRole;
 			aR.nvRole = container;
-			player.sendMessage("Les roles de "+aR.player+" et de "+p.player+" ont été invertit");
+			player.sendMessage("Les roles de "+aR.player.player+" et de "+p.player.player+" ont été invertit");
 			end();
 		}
 	}

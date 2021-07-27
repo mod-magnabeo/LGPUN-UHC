@@ -19,6 +19,7 @@ public class Doppelganger extends Role {
 	
 	@Override
 	public void clickPlayer(Role p, Player player) {
+		
 		if(p.rMiddle == false) {
 		player.sendMessage(p.player+" est "+p.sRolePlayed+" vous devenez donc ce role");
 		//System.out.println(p.player+" est "+p.sRolePlayed+" vous devenez donc ce role");

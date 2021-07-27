@@ -7,7 +7,7 @@ import com.Wolf_IV.LGPUNUHC.Team.Joueur;
 import com.Wolf_IV.LGPUNUHC.Team.Team;
 
 public class Role {
-	boolean rMiddle = false;
+	public boolean rMiddle = false;
 	Role rolePlayed;
 	String sRolePlayed;
 	Role nvRole;
@@ -26,16 +26,16 @@ public class Role {
 	public boolean wPlay = true;
 	public void init(Joueur p) {
 		p.role = this;
-		System.out.println("hello");
-		if(p == null) {
+		if(p.player.equalsIgnoreCase("")){
 			rMiddle = true;
-		}else {
-		this.player = p;
+			
 		}
+		this.player = p;
+		
 		/*if(Bukkit.getPlayer(this.player) != null) {
 			Bukkit.getPlayer(this.player).sendMessage("Vous Etes "+this.sRolePlayed);
 		}*/
-		
+			
 				ordre = numOrdre;
 				if(player.team.roleNow != null) {
 					player.team.roleNow.pre = this;
@@ -47,7 +47,8 @@ public class Role {
 				player.team.role[ordre] = this;
 				numOrdre++;
 				nvRole = this;
-				System.out.println(ordre);
+				//System.out.println(ordre);
+				
 				
 		
 		
@@ -55,15 +56,18 @@ public class Role {
 	
 	public boolean play() {
 		if(this.player == null) {
-			return false;
+			end();
+			return true;
 		}
+		if(rMiddle == false) {
 		Player player = Bukkit.getPlayer(this.player.player);
 		if(player != null) {
 			player.sendMessage("A votre tour de jouer faire /play");
 		}
+		}
 		isTurn = true;
 		this.player.team.roleNow = this;
-		if(wPlay) {
+		if(wPlay && rMiddle == false) {
 		this.onPlay();
 		}else {
 			end();
@@ -118,6 +122,9 @@ public class Role {
 	
 	
 	public Player getPlayer() {
+		if(rMiddle) {
+			return null;
+		}
 		return Bukkit.getPlayer(player.player);
 		
 	}

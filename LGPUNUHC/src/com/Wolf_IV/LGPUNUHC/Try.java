@@ -8,7 +8,7 @@ import com.Wolf_IV.LGPUNUHC.Team.Team;
 
 public class Try {
 
-	public static void main(String[] args) {
+	//public static void main(String[] args) {
 		
 		/*Role w = new Doppelganger(new Joueur("Wolf_IV", new Team()));
 		Role c = new Role();
@@ -22,6 +22,6 @@ public class Try {
 		System.out.println(w.role[0].player.player+ w.role[1].player.player+w.role[2].player.player);
 		System.out.println(w.role[0].active+ ""+ w.role[1].active+w.role[2].player);*/
 
-	}
+	//}
 
 }

@@ -1,5 +1,6 @@
 package com.Wolf_IV.LGPUNUHC.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,7 +16,7 @@ public class CPlay implements CommandExecutor {
 			if(cmd.getName().equalsIgnoreCase("play")) {
 				Player player = (Player) sender;
 				for(Joueur joueur : Joueur.joueurs) {
-					if(player.getName().equalsIgnoreCase(joueur.player)) {
+					if(joueur !=null && joueur.role.rMiddle == false && player.getName().equalsIgnoreCase(joueur.player)) {
 						joueur.team.display(player);
 						return true;
 					}

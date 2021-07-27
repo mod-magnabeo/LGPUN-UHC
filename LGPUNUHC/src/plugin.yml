@@ -4,7 +4,6 @@ author: Wolf_IV
 main: com.Wolf_IV.LGPUNUHC.MainL
 commands: 
   startlg:
-    description: Starts Uhc
+    description: Starts UHC
     permission: startlg.use
   play:
-    description: Affiche l'inventaire pour joué

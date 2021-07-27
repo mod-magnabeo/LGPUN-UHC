@@ -45,7 +45,7 @@ public class Wolf extends Role{
 	}
 	@Override
 	public void clickPlayer(Role p, Player player) {
-		if(p.rMiddle == false) {
+		if(p.rMiddle == true) {
 			player.sendMessage("Le Role que vous avez visioner est "+p.sRolePlayed);
 			//System.out.println(p.player+" est "+p.sRolePlayed+" vous devenez donc ce role");
 			this.end();

@@ -13,10 +13,10 @@ public class MainL extends JavaPlugin implements Listener{
 	public static MainL main;
 	@Override
 	public void onEnable() {
-		main = this;
+		
 		getCommand("play").setExecutor(new CPlay());
 		getCommand("startlg").setExecutor(new CStart());
-		
+		main = this;
 	}
 	@Override
 	public void onDisable() {

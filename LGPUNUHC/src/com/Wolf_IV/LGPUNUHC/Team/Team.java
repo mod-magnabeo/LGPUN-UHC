@@ -11,8 +11,9 @@ import com.Wolf_IV.LGPUNUHC.Role.Role;
 public class Team {
 	public Role roleNow;
 	public static Role[] role = new Role[25];
+	//Randomiser car la on peut savoir qui est qui
 	public Joueur[] joueurs =new Joueur[10];//A changer dans le futur pour de plus grosse équipe
-	int itemLocJ[] = {21,31,23,3,5,17,44,50,48,36,9};
+	int itemLocJ[] = {3,5,17,44,50,48,36,9,21,31,23};
 	//int itemLocM[] = {21,31,23};
 	//Team Joueur a définir
 	
@@ -24,9 +25,10 @@ public class Team {
 			if(joueur != null) {
 				ItemStack skull = new ItemStack(397, 1, (short) 3);
    				SkullMeta meta = (SkullMeta) skull.getItemMeta();
-   				if(joueur.player !=null) {
+   				if(!joueur.player.equalsIgnoreCase("")) {
    				meta.setDisplayName("§b"+joueur.player);
    				meta.setOwner(joueur.player);
+   				
    				}else {
    					meta.setDisplayName("§aN°"+(i+1));
    	   				meta.setOwner("py3_3");

@@ -20,6 +20,7 @@ public class CStart implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
 		if(cmd.getName().equalsIgnoreCase("startlg")) {
+			//Debut Random
 			//A set a l'envers
 			Team team = new Team();
 			Joueur j9 = new Joueur("Wolf_IV",team);
@@ -34,12 +35,14 @@ public class CStart implements CommandExecutor {
 			j5.setRole(new Seer(j5));
 			Joueur j4 = new Joueur("Wolf_IV",team);
 			j4.setRole(new Wolf(j4));
-			Joueur j3 = new Joueur("Wolf_IV",team);
+			Joueur j3 = new Joueur("",team);
 			j3.setRole(new Wolf(j3));
-			Joueur j2 = new Joueur("Wolf_IV",team);
+			Joueur j2 = new Joueur("",team);
 			j2.setRole(new Doppelganger(j2));
-			Joueur j1 = new Joueur("Wolf_IV",team);
+			Joueur j1 = new Joueur("",team);
 			j1.setRole(new Tanner(j1));
+			
+			team.roleNow.play();
 			
 			return true;
 		}
